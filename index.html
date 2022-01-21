@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            background-color: #FFFF00;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: nowrap;
+            
+            
+        }
+        h2{
+            font-family: 'Fredoka One', cursive;
+             text-align: center;
+            font-size: 50px;
+
+        }
+        #imgDiv{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+           
+            
+        }
+        .playerDiv{
+            display:flex;
+            flex-direction: row;
+            font-family: 'Fredoka One', cursive;
+            font-size: 35px;
+            justify-content: space-around;
+        }
+        button {
+        margin-top: 20px;
+       align-self: center;
+       border-color:black;
+       font-family: 'Fredoka One', cursive;
+       border-width: 3px;
+       color: black;
+       font-size: 18px;
+       border-radius: 10px;
+       background: transparent;
+       height:50px;
+       width:200px;
+}
+
+
+img{
+    transition: 3s;
+    width:250px;
+    height:250px;
+    
+}
+
+button:hover {
+  background-color:black;
+  color: #FFFF00;
+  transition: ease-in;
+  cursor: pointer;
+}
+#winner{
+    font-family: 'Fredoka One', cursive;
+    font-size: 30px;
+    align-self: center;
+}
+    </style>
+    <script>
+    let images=["stone.png","scissor.png","paper.png"];
+    
+    function random(){
+        return Math.floor(Math.random()*3);
+    }
+    window.onload=function(){
+    document.getElementById("playButton").addEventListener("click",()=>{
+    let player1=images[random()];
+    let player2=images[random()];
+    let scoreYou=0;
+    let scoreComputer=0;
+
+    document.getElementById("player1").src=player1;
+    document.getElementById("player2").src=player2;
+    if(player1===player2){
+        
+        document.getElementById("winner").innerHTML="It's a tie!!";
+    }
+    else if((player1==="paper.png"&&player2==="stone.png")||(player1==="scissor.png"&&player2==="paper.png")||(player1==="stone.png"&&player2==="scissor.png"))
+    {
+        document.getElementById("winner").innerHTML="You won!! Hurray!!";
+    }
+    else if((player2==="paper.png"&&player1==="stone.png")||(player2==="scissor.png"&&player1==="paper.png")||(player2==="stone.png"&&player1==="scissor.png"))
+{
+    document.getElementById("winner").innerHTML="You Loose. Better luck next time.";
+    }
+   
+});
+}
+
+    </script>
+    <title>Rock Paper Scissor</title>
+</head>
+<body>
+    <h2>Hey! Are you ready to play the famous old school game?</h2>
+    <div class="playerDiv">
+        <h3>This is You</h3>
+        <h3>The Computer</h3>
+    </div>
+    <div id="imgDiv">
+        <img id="player1" src="paper.png"></img>
+       
+        <img id="player2" src="stone.png"></img>
+        
+    </div>
+    
+        
+        <h3 id="winner">Lets Play</h3>
+        
+    
+    
+    <button id="playButton">Click me to Play</button>
+    
+</body>
+</html>
